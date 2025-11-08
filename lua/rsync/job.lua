@@ -84,12 +84,12 @@ M.get_cmd = function(self)
     if self.opts.delete then
         table.insert(opts, "--delete")
     end
-    for _, pattern in ipairs(self.opts.exclude) do
-        local opt = string.format("--exclude %s", vim.fn.escape(pattern, " \\"))
-        table.insert(opts, opt)
-    end
     for _, pattern in ipairs(self.opts.include) do
         local opt = string.format("--include %s", vim.fn.escape(pattern, " \\"))
+        table.insert(opts, opt)
+    end
+    for _, pattern in ipairs(self.opts.exclude) do
+        local opt = string.format("--exclude %s", vim.fn.escape(pattern, " \\"))
         table.insert(opts, opt)
     end
     if self.opts.port then
